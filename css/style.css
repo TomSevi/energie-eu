@@ -65,3 +65,21 @@ footer{background:var(--tief);color:#cfe0d2;padding:2rem 1.2rem;text-align:cente
 @media(max-width:760px){.kette{grid-template-columns:1fr}.kette::before{display:none}.kette button{display:flex;align-items:center;gap:1rem;text-align:left}.kette b{margin:0}.eu{grid-template-columns:1fr}.info ul{columns:1}.wrap{padding:3rem 1.2rem}}
 @media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 html.ruhe *,html.ruhe *::before{animation:none!important;transition:none!important}html.ruhe .rv{opacity:1;transform:none}
+
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1rem}.tw table{min-width:520px}.tw .breit{min-width:860px}
+.tw th[scope=row]{background:#f3efe2;position:sticky;left:0;min-width:9rem}
+img,svg{max-width:100%}footer{line-height:1.7;overflow-wrap:anywhere}
+.kette::after{content:"";position:absolute;right:-4px;top:15px;border-left:16px solid var(--hell);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.neu{animation:ein .5s}
+.bilder{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin:1rem 0}
+.bild{position:relative;aspect-ratio:4/3;background:var(--wald);color:#fff;border:3px solid transparent;padding:0;overflow:hidden;text-align:left}
+.bild img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}.bild:hover img{transform:scale(1.05)}
+.bild span{position:absolute;left:0;right:0;bottom:0;padding:.5rem .8rem;background:#0a2a20cc;font-weight:600}
+.bild[aria-pressed=true]{border-color:var(--hell)}.bild.leer img{display:none}
+.bild.leer::before{content:"[BILD EINFÜGEN: " attr(data-src) "]";position:absolute;inset:0;display:grid;place-items:center;padding:1rem;text-align:center;font-size:.85rem;background:#fff3b8;color:#5a4500}
+.bdet{background:#fff;border-left:6px solid var(--hell);padding:1rem 1.2rem}
+.br{display:grid;grid-template-columns:7.5rem 1fr 5rem;gap:.6rem;align-items:center;margin:.45rem 0}.br .balken{margin:0}.br b{text-align:right}
+.g{background:#fff;padding:1.4rem;border-top:6px solid var(--blau);margin-bottom:1.5rem}
+.kern{background:var(--wald);color:#fff;border-left:10px solid var(--hell);padding:2rem}.kern h2{color:var(--hell)}
+.qu{padding-left:1.2rem;overflow-wrap:anywhere}
+@media(max-width:760px){.kette::after{display:none}.br{grid-template-columns:5.5rem 1fr 4rem;font-size:.9rem}}

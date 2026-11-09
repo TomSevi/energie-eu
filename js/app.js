@@ -16,14 +16,18 @@ const band=o=>`<section class="kopf"><div class="wrap"><p class="kicker">${I.sit
 const hinweis=()=>`<p class="hinweis">${I.site.entwurf}</p>`;
 const sec=h=>`<section class="wrap rv">${h}</section>`;
 
+const tab=o=>`<div class="tw"><table class="breit"><thead><tr><th>Kriterium</th>${o.spalten.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${o.zeilen.map(([l,...v])=>`<tr><th scope="row">${l}</th>${v.map(x=>`<td>${t(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+const quellen=q=>q?sec(`<h2>Quellen</h2><ul class="qu">${q.map(([l,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${l}</a></li>`).join('')}</ul>`):'';
+const intl=()=>{const n=I.eu.international,e=n.emissionen;return sec(`<h2>${n.titel}</h2><p class="lead">${t(n.intro)}</p><p><small>${n.datenstand}</small></p>${tab(n.tabelle)}<p><small>${n.methode}</small></p>`)+sec(`<div class="spalten">${n.laender.map(l=>`<article><h3>${l.name}</h3><ul>${l.punkte.map(p=>`<li>${t(p)}</li>`).join('')}</ul></article>`).join('')}</div>`)+sec(`<h2>${e.titel}</h2>${e.absaetze.map(p=>`<p>${t(p)}</p>`).join('')}<ol>${e.kette.map(k=>`<li>${k}</li>`).join('')}</ol><p>${t(e.einschraenkung)}</p>`)+sec(`<div class="kern"><h2>${n.kern.titel}</h2><p class="lead">${n.kern.text}</p></div>`)};
+const grafik=g=>`<div class="g"><h3>${g.titel}</h3>${g.balken.map(([l,w,b])=>`<div class="br"><span>${l}</span><div class="balken" role="img" aria-label="${l}: ${w}"><i data-b="${b}"></i></div><b>${w}</b></div>`).join('')}<small>${g.hinweis}</small></div>`;
 const seiten={
 start:()=>`<section class="hero"><div class="wrap"><p class="kicker">${I.site.kicker}</p><h1>${I.site.titel}</h1><p class="lead">${I.site.untertitel}</p></div>${hero()}</section>`+sec(`${hinweis()}<h2>${I.start.titel}</h2><p class="lead">${t(I.start.einleitung)}</p>`)+sec(`<h2>Themen entdecken</h2><div class="themen">${I.themen.map((x,n)=>`<a href="${x.datei}"><span>0${n+1}</span><h3>${x.titel}</h3><p>${t(x.text)}</p></a>`).join('')}</div>`),
 energie:()=>band(I.energie)+sec(`${hinweis()}<div class="quellen">${I.energie.quellen.map(q=>`<figure><svg viewBox="0 0 200 80" aria-hidden="true">${quelle(q)}</svg><figcaption>${q}</figcaption></figure>`).join('')}</div><ol class="kette">${I.energie.stationen.map((s,i)=>`<li><button data-i="${i}" aria-controls="info" aria-expanded="false"><b>${i+1}</b>${s.titel}</button></li>`).join('')}</ol><div class="info" id="info" role="region" aria-live="polite"></div>`),
-eu:()=>band(I.eu)+sec(`${hinweis()}<p class="hinweis">${I.eu.hinweis}</p><div class="eu" id="karte"></div>`),
+eu:()=>band(I.eu)+sec(`${hinweis()}<p class="hinweis">${I.eu.hinweis}</p><div class="eu" id="karte"></div>`)+intl()+quellen(I.eu.quellen),
 probleme:()=>band(I.probleme)+sec(`${hinweis()}<p><button class="btn" id="alle">Alle öffnen / schließen</button></p><div class="paare">${I.probleme.paare.map(([a,b,c])=>`<details><summary>${a}</summary><p><strong>Herausforderung:</strong> ${t(b)}</p><div class="l">${t(c)}</div></details>`).join('')}</div>`),
-klima:()=>band(I.klima)+sec(`${hinweis()}<div class="zahlen">${I.klima.zahlen.map(z=>`<div><span>${z.label}</span><strong>${t(z.wert)}</strong><div class="balken" role="img" aria-label="Platzhalter-Balken"><i data-b="${z.breite}"></i></div><small>Balkenlänge nur Platzhalter</small></div>`).join('')}</div><div class="spalten">${I.klima.themen.map(([a,b])=>`<article><h3>${a}</h3><p>${t(b)}</p></article>`).join('')}</div>`),
+klima:()=>band(I.klima)+sec(`${hinweis()}${I.klima.absaetze.map(p=>`<p class="lead">${p}</p>`).join('')}${I.klima.grafiken.map(grafik).join('')}<p class="hinweis">${I.klima.modell}</p><div class="spalten">${I.klima.themen.map(([a,b])=>`<article><h3>${a}</h3><p>${t(b)}</p></article>`).join('')}</div>`)+quellen(I.klima.quellen),
 quiz:()=>band(I.quiz)+sec(`<div id="quiz"></div>`),
-ueber:()=>band(I.ueber)+sec(`<div class="spalten">${I.ueber.abschnitte.map(([a,b])=>`<article><h3>${a}</h3><p>${t(b)}</p></article>`).join('')}</div><h2 style="margin-top:3rem">Projektmitglieder</h2><div class="team">${I.ueber.team.map(([n,r])=>`<div><h3>${t(n)}</h3><p>${r}</p></div>`).join('')}</div>`)
+ueber:()=>band(I.ueber)+sec(`<div class="spalten">${I.ueber.abschnitte.map(([a,b])=>`<article><h3>${a}</h3>${b?`<p>${t(b)}</p>`:''}</article>`).join('')}</div><h2 style="margin-top:3rem">Projektmitglieder</h2><div class="team">${I.ueber.team.map(([n,r])=>`<div><h3>${t(n)}</h3><p>${r}</p></div>`).join('')}</div>`)
 };
 
 document.body.innerHTML=kopf()+`<main id="inhalt">${seiten[seite]()}</main><footer>${I.site.fuss}</footer>`;
@@ -41,13 +45,15 @@ $$('.rv').forEach(e=>io?io.observe(e):zeig(e));
 
 /* Energiekette */
 if(seite==='energie'){const S=I.energie.stationen,b=$$('.kette button'),box=$('#info');
- const zeige=i=>{b.forEach((x,n)=>x.setAttribute('aria-expanded',n===i));const s=S[i];box.innerHTML=`<h3>${i+1}. ${s.titel}</h3><p>${t(s.text)}</p>${s.liste?`<ul>${s.liste.map(l=>`<li>${l}</li>`).join('')}</ul>`:''}`};
+ const zeige=i=>{b.forEach((x,n)=>x.setAttribute('aria-expanded',n===i));const s=S[i];box.innerHTML=`<h3>${i+1}. ${s.titel}</h3><p>${t(s.text)}</p>${s.bilder?`<div class="bilder">${s.bilder.map((m,n)=>`<button class="bild" data-n="${n}" data-src="${m.datei}" aria-pressed="false"><img src="${m.datei}" alt="${m.alt}" loading="lazy" onerror="this.parentNode.classList.add('leer')"><span>${m.titel}</span></button>`).join('')}</div><div class="bdet" aria-live="polite">Klicke ein Bild an, um mehr zu erfahren.</div>`:''}${s.liste?`<ul>${s.liste.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}${(s.mehr||[]).map(x=>`<p>${t(x)}</p>`).join('')}`;
+  $$('.bild',box).forEach(x=>x.onclick=()=>{const m=s.bilder[+x.dataset.n];$$('.bild',box).forEach(y=>y.setAttribute('aria-pressed',y===x));$('.bdet',box).innerHTML=`<strong>${m.titel}</strong><p>${t(m.text)}</p><small>${t(m.quelle)}</small>`});
+  box.classList.remove('neu');void box.offsetWidth;box.classList.add('neu')};
  b.forEach(x=>x.onclick=()=>zeige(+x.dataset.i));zeige(0)}
 
 /* Ländervergleich */
 if(seite==='eu'){const E=I.eu,box=$('#karte'),DE=E.laender.find(l=>l.id==='DE');let sel=E.laender.find(l=>l.id==='FR');
  const w=(l,i)=>t(l.werte?.[i]??E.platzhalter);
- const draw=()=>{box.innerHTML=`<div class="kacheln" role="group" aria-label="Länder auswählen">${E.laender.map(l=>`<button data-id="${l.id}" class="${l===sel?'an':''}${l.id==='DE'?' de':''}" style="grid-column:${l.x+1};grid-row:${l.y+1}" aria-pressed="${l===sel}" title="${l.name}">${l.id}</button>`).join('')}</div><div><h3>Deutschland im Vergleich mit: ${sel.name}</h3><table><thead><tr><th>Kriterium</th><th>Deutschland</th><th>${sel.name}</th></tr></thead><tbody>${E.felder.map((f,i)=>`<tr><th scope="row">${f}</th><td>${w(DE,i)}</td><td>${w(sel,i)}</td></tr>`).join('')}</tbody></table></div>`;
+ const draw=()=>{box.innerHTML=`<div class="kacheln" role="group" aria-label="Länder auswählen">${E.laender.map(l=>`<button data-id="${l.id}" class="${l===sel?'an':''}${l.id==='DE'?' de':''}" style="grid-column:${l.x+1};grid-row:${l.y+1}" aria-pressed="${l===sel}" title="${l.name}">${l.id}</button>`).join('')}</div><div><h3>Deutschland im Vergleich mit: ${sel.name}</h3><div class="tw"><table><thead><tr><th>Kriterium</th><th>Deutschland</th><th>${sel.name}</th></tr></thead><tbody>${E.felder.map((f,i)=>`<tr><th scope="row">${f}</th><td>${w(DE,i)}</td><td>${w(sel,i)}</td></tr>`).join('')}</tbody></table></div></div>`;
   $$('.kacheln button',box).forEach(b=>b.onclick=()=>{sel=E.laender.find(l=>l.id===b.dataset.id);draw();$(`[data-id=${sel.id}]`,box).focus()})};draw()}
 
 /* Probleme */

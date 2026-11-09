@@ -1,0 +1,1 @@
+Hier solar.jpg, wind.jpg, wasser.jpg ablegen (Bildquelle und Lizenz in js/inhalte.js eintragen)
