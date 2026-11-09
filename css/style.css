@@ -83,3 +83,25 @@ img,svg{max-width:100%}footer{line-height:1.7;overflow-wrap:anywhere}
 .kern{background:var(--wald);color:#fff;border-left:10px solid var(--hell);padding:2rem}.kern h2{color:var(--hell)}
 .qu{padding-left:1.2rem;overflow-wrap:anywhere}
 @media(max-width:760px){.kette::after{display:none}.br{grid-template-columns:5.5rem 1fr 4rem;font-size:.9rem}}
+
+.hinweis{background:#e3f1d3;border-left-color:var(--hell);color:var(--text)}
+.bz{margin-bottom:1rem}.bz .quellen{margin-bottom:0}.bdet{margin-top:.6rem}
+.kette{position:sticky;top:var(--navh,56px);z-index:6;background:var(--creme);padding:.5rem 0 .6rem;margin:0 0 1.2rem}
+.kette::before{top:32px}.kette::after{top:23px}
+.kette em{font-style:normal;display:block;font-size:.9rem;line-height:1.25}
+.kette button[aria-expanded=true] em{font-weight:700}.kette button[aria-expanded=true] b{box-shadow:0 0 0 4px var(--hell)}
+.bilder{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.bilder[data-n="1"]{grid-template-columns:minmax(0,640px)}
+.bild.leer::before{content:attr(data-titel);background:#174b38;color:#fff;font:700 1.1rem Georgia,serif;padding:1rem}.bild.leer span{display:none}
+.themen{grid-template-columns:repeat(3,1fr)}
+.balken i{min-width:3px}.achse .ticks{display:flex;justify-content:space-between;font-size:.75rem;color:#555;border-top:1px solid #cdd6c8}
+@media(max-width:1000px){.themen{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.kette{grid-template-columns:repeat(6,1fr)}.kette::before,.kette::after{display:block}.kette button{display:block;text-align:center}.kette b{margin:0 auto;width:44px;height:44px}.kette em{display:none}.kette::before{top:28px}.kette::after{top:19px}}
+@media(max-width:600px){.themen{grid-template-columns:1fr}}
+
+.kacheln{grid-template-columns:repeat(3,1fr)}.eu{grid-template-columns:minmax(240px,330px) 1fr}
+.kacheln small{display:block;font:500 .62rem system-ui;margin-top:.25rem;overflow-wrap:anywhere}
+.paare details>p,.paare details>.tw{margin:.8rem 0}.paare .tw table{min-width:640px}
+.sim{background:#fff;padding:1rem;border-top:6px solid var(--tuerkis)}.sim svg{width:100%;height:auto}
+.simz{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}.simz input{flex:1;min-width:160px}
+.speicher{height:18px;background:#dfe6da}.speicher i{display:block;height:100%;background:var(--hell);width:0;transition:width .8s}
+.legende span{display:inline-block;width:22px;height:4px;vertical-align:middle;margin:0 .3rem 0 .8rem}.legende .k1{background:#1b8a8c}.legende .k2{background:var(--wald)}
