@@ -105,3 +105,20 @@ img,svg{max-width:100%}footer{line-height:1.7;overflow-wrap:anywhere}
 .simz{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}.simz input{flex:1;min-width:160px}
 .speicher{height:18px;background:#dfe6da}.speicher i{display:block;height:100%;background:var(--hell);width:0;transition:width .8s}
 .legende span{display:inline-block;width:22px;height:4px;vertical-align:middle;margin:0 .3rem 0 .8rem}.legende .k1{background:#1b8a8c}.legende .k2{background:var(--wald)}
+
+.weltkarte svg{display:block;width:100%;height:auto;max-height:520px;background:#e9f1f2}.weltkarte path{fill:#cdd6c8;stroke:#fff;stroke-width:.4}
+.wk,.wk *{fill:var(--tuerkis)!important;cursor:pointer}.wk:hover,.wk:hover *{fill:var(--hell)!important}.sel,.sel *{fill:var(--wald)!important}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.chips button{background:#fff;border:2px solid var(--wald);padding:.35rem .8rem;transition:background .2s,color .2s}.chips button:hover,.chips button[aria-pressed=true]{background:var(--wald);color:#fff}
+.landinfo{background:#fff;border-top:6px solid var(--tuerkis);padding:1.2rem}.landinfo h4{margin:1rem 0 .4rem}
+.fakten{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem 1.2rem;margin:0}.fakten div{border-left:4px solid var(--hell);padding-left:.7rem}.fakten dt{font-weight:700;font-size:.85rem;color:var(--tuerkis)}.fakten dd{margin:0}
+.stk{margin:.4rem 0}.stack{display:flex;height:30px;background:#dfe6da}.stack i{display:grid;place-items:center;font:600 .75rem system-ui;font-style:normal;color:#14231c;min-width:2px;transition:width .8s}
+.leg{display:flex;flex-wrap:wrap;gap:.3rem 1rem;font-size:.8rem}.leg u{display:inline-block;width:12px;height:12px;margin-right:.3rem;vertical-align:middle}
+.landinfo select,.reg select{font:inherit;padding:.4rem;border:2px solid var(--wald);background:#fff;max-width:100%}
+.gloss{font-size:.95rem;padding-left:1.2rem}
+.sitb{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}.sitb button{background:#fff;border:3px solid var(--c);padding:.6rem 1.1rem;font-weight:600;transition:background .2s,color .2s}.sitb button:hover,.sitb button[aria-selected=true]{background:var(--c);color:#fff}
+.sitp{background:#fff;border-top:6px solid var(--tuerkis);padding:1.2rem;margin-top:1rem}.sitg{display:grid;grid-template-columns:minmax(180px,300px) 1fr;gap:1.2rem;align-items:center}
+.wippe{transform-origin:150px 96px;animation:wip 1.6s ease-out both}@keyframes wip{from{transform:rotate(0)}to{transform:rotate(var(--w))}}
+.reg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1rem}.reg label{display:grid;gap:.3rem;font-weight:600}.reg input[type=range]{width:100%}.reg output{font-weight:400}
+.szen{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}
+.bild.mitsvg::before{display:none}.bild.leer svg{display:block;width:100%;height:100%}.lampe{animation:blink 1.4s ease-in-out infinite alternate}@keyframes blink{from{opacity:.25}}
+@media(max-width:760px){.sitg{grid-template-columns:1fr}}
