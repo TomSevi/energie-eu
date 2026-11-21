@@ -106,7 +106,7 @@ img,svg{max-width:100%}footer{line-height:1.7;overflow-wrap:anywhere}
 .speicher{height:18px;background:#dfe6da}.speicher i{display:block;height:100%;background:var(--hell);width:0;transition:width .8s}
 .legende span{display:inline-block;width:22px;height:4px;vertical-align:middle;margin:0 .3rem 0 .8rem}.legende .k1{background:#1b8a8c}.legende .k2{background:var(--wald)}
 
-.weltkarte svg{display:block;width:100%;height:auto;max-height:520px;background:#e9f1f2}.weltkarte path{fill:#cdd6c8;stroke:#fff;stroke-width:.4}
+.weltkarte svg{display:block;width:100%;height:auto;background:#e9f1f2}.weltkarte path{fill:#cdd6c8;stroke:#fff;stroke-width:.4}
 .wk,.wk *{fill:var(--tuerkis)!important;cursor:pointer}.wk:hover,.wk:hover *{fill:var(--hell)!important}.sel,.sel *{fill:var(--wald)!important}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.chips button{background:#fff;border:2px solid var(--wald);padding:.35rem .8rem;transition:background .2s,color .2s}.chips button:hover,.chips button[aria-pressed=true]{background:var(--wald);color:#fff}
 .landinfo{background:#fff;border-top:6px solid var(--tuerkis);padding:1.2rem}.landinfo h4{margin:1rem 0 .4rem}
